@@ -40,7 +40,7 @@ function Page() {
   useEffect(() => {
     const fetchTournament = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/getAllTournament');
+        const res = await axios.get('http://localhost:4002/api/getAllTournament');
         setData(res.data.post);
         console.log(res.data.post) 
       } catch (error) {

@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-  baseURL: "https://gametic-backend.onrender.com/api",
+  baseURL: "http://localhost:4002/api",                     
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
