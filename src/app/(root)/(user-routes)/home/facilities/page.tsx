@@ -66,7 +66,7 @@ const TurfList = () => {
   return (
     <div className="max-w-8xl mx-auto pt-16">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-5 p-6 bg-white">
-        <select
+        {/* <select
           className="border border-[#00423d] text-[#00423d] px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00423d]/50"
           value={selectedCategory}
           onChange={handleCategoryChange}
@@ -77,7 +77,7 @@ const TurfList = () => {
               {cat}
             </option>
           ))}
-        </select>
+        </select> */}
 
         <input
           type="text"

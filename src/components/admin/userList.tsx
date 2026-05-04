@@ -206,7 +206,7 @@ const UserList: React.FC<UserListProps> = ({ search, role }) => {
                                 onClick={() => deleteAUser(item._id)}
                               >
                                 <Trash2 size={16} />
-                                <span>Delete Venue</span>
+                                <span>Delete user</span>
                               </button>
                             </li>
                           </ul>

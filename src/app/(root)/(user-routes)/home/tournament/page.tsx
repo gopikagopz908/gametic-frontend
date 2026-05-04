@@ -12,7 +12,7 @@ export interface Tournament {
   subtitle: string;
   location: string;
   distance: string;
-  joinedTeams: number;
+  joinedTeams: string[];
   maxPlayers: number;
   dateFrom: string;
   dateTo: string;
@@ -59,7 +59,7 @@ function Page() {
   return (
     <>
     <div className='flex justify-end mt-16'>
-      <button onClick={openModal} style={{ backgroundColor: '#415C41' }} className=' bg- py-2 px-3 rounded-xl font-semibold text-white'>Add Tournament</button>
+      <button onClick={openModal} style={{ backgroundColor: '#415C41' }} className=' bg- py-2 px-3 rounded-xl font-semibold text-white mt-6'>Add Tournament</button>
     </div>
     <main className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 min-h-screen">
       {data?.map((tournament) => (

@@ -19,3 +19,18 @@ export const updateBookingStatus = createAsyncThunk(
     }
   }
 );
+
+
+export const fetchAllBookings = createAsyncThunk(
+  "admin/fetchAllBookings",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get("/admin/bookings");
+      return data.bookings;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch bookings"
+      );
+    }
+  }
+);

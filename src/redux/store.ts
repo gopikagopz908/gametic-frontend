@@ -8,6 +8,7 @@ import adminVenueReducer from "./slices/admin/venueSlice";
 import turfDetailsReducer from "./slices/turfDetailsSlice";
 import hostReducer from "./slices/user/hostSlice";
 import userVenueReducer from "./slices/user/venueSlice";
+import adminBookingReducer from "./slices/admin/adminBookingSlice";
 import {
   persistStore,
   FLUSH,
@@ -26,6 +27,8 @@ export const store = configureStore({
     booking: bookingReducer,
     adminUsers: adminUserReducer,
     adminVenues: adminVenueReducer,
+        adminBookings: adminBookingReducer, // ✅ ADD THIS
+
     host: hostReducer,
     turfDetails: turfDetailsReducer,
     userVeune: userVenueReducer,

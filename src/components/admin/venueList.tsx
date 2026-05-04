@@ -159,7 +159,7 @@ const VenueList: React.FC<VenuesListProps> = ({ search }) => {
                     </td>
                     <td className="p-4">
                       <div className="flex items-center justify-end gap-2">
-                        <button
+                        {/* <button
                           className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
                           title="View details"
                         >
@@ -167,7 +167,7 @@ const VenueList: React.FC<VenuesListProps> = ({ search }) => {
                             size={18}
                             className="text-gray-500 hover:text-blue-600"
                           />
-                        </button>
+                        </button> */}
                         <div className="dropdown dropdown-left">
                           <button
                             className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"

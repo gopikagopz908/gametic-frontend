@@ -19,13 +19,13 @@ const QuickActions: React.FC = () => {
       href: '/owner/bookings',
       color: 'bg-green-50 border-green-200'
     },
-    {
-      title: 'Analytics',
-      description: 'View detailed reports',
-      icon: <BarChart3 size={24} className="text-purple-600" />,
-      href: '/owner/analytics',
-      color: 'bg-purple-50 border-purple-200'
-    },
+    // {
+    //   title: 'Analytics',
+    //   description: 'View detailed reports',
+    //   icon: <BarChart3 size={24} className="text-purple-600" />,
+    //   href: '/owner/analytics',
+    //   color: 'bg-purple-50 border-purple-200'
+    // },
     {
       title: 'Manage Turfs',
       description: 'Edit existing turfs',
@@ -33,13 +33,13 @@ const QuickActions: React.FC = () => {
       href: '/owner',
       color: 'bg-orange-50 border-orange-200'
     },
-    {
-      title: 'Customer Management',
-      description: 'View customer details',
-      icon: <Users size={24} className="text-indigo-600" />,
-      href: '/owner/customers',
-      color: 'bg-indigo-50 border-indigo-200'
-    },
+    // {
+    //   title: 'Customer Management',
+    //   description: 'View customer details',
+    //   icon: <Users size={24} className="text-indigo-600" />,
+    //   href: '/owner/customers',
+    //   color: 'bg-indigo-50 border-indigo-200'
+    // },
     {
       title: 'Settings',
       description: 'Configure your account',
@@ -53,7 +53,7 @@ const QuickActions: React.FC = () => {
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         {actions.map((action, index) => (
           <a
             key={index}

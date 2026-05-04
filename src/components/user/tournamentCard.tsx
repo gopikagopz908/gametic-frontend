@@ -14,8 +14,9 @@ interface Props {
 export default function TournamentCard({ data }: Props) {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [joinedTeamsCount, setJoinedTeamsCount] = useState(data.joinedTeams);
-
+const [joinedTeamsCount, setJoinedTeamsCount] = useState(
+  data.joinedTeams?.length || 0
+);console.log(data.joinedTeams,"ppppppppppppppppppppppp")
   const handleCardClick = () => {
     router.push(`/tournament/${data._id}`);
   };

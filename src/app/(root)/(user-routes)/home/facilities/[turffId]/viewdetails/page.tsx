@@ -129,7 +129,7 @@ function Page() {
                     />
                   </div>
                   <div className="flex gap-3 overflow-x-auto">
-                    {venue.images.map((img, idx) => (
+                    {venue?.images?.map((img, idx) => (
                       <Image
                         key={idx}
                         src={img}
