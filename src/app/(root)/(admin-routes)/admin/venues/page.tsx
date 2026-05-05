@@ -20,6 +20,8 @@ const Page = () => {
     dispatch(fetchAllVenues({ page: 1, limit: 5, search: searchTerm }));
     console.log(searchTerm);
   }, [dispatch, searchTerm]);
+  const {  totalBannedVenues } =
+  useAppSelector((state) => state.adminVenues);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -86,7 +88,7 @@ const Page = () => {
                   Active Venues
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-800 mt-1">
-                  {totalActiveVenues}
+                  {totalVenues}
                 </h3>
               </div>
               <div className="bg-green-50 p-3 rounded-full">
@@ -114,7 +116,7 @@ const Page = () => {
                   Banned Venues
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-800 mt-1">
-                  {"0"}
+                  {totalBannedVenues}
                 </h3>
               </div>
               <div className="bg-red-50 p-3 rounded-full">

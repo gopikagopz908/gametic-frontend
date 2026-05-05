@@ -122,9 +122,8 @@ const navSections: NavSectionType[] = [
   {
     title: "OVERVIEW",
     items: [
-      { label: "App", icon: <AppIcon />, path: "/admin/app" },
-      { label: "Analytics", icon: <AnalyticsIcon />, path: "/admin/analytics" },
-      { label: "Booking", icon: <BookingIcon />, path: "/admin/booking" },
+      // { label: "Analytics", icon: <AnalyticsIcon />, path: "/admin/analytics" },
+      // { label: "Booking", icon: <BookingIcon />, path: "/admin/booking" },
     ],
   },
   {
@@ -155,21 +154,21 @@ const navSections: NavSectionType[] = [
         hasSubmenu: true,
         subItems: [
           { label: "All Bookings", path: "/admin/bookings" },
-          { label: "Pending", path: "/admin/bookings/pending" },
-          { label: "Completed", path: "/admin/bookings/completed" },
+          { label: "Confirmed", path: "/admin/bookings/confirmed" },
+          { label: "Cancelled", path: "/admin/bookings/cancelled" },
         ],
       },
-      {
-        label: "Invoice",
-        icon: <InvoiceIcon />,
-        path: "/admin/invoice",
-        hasSubmenu: true,
-        subItems: [
-          { label: "All Invoices", path: "/admin/invoice" },
-          { label: "Create New", path: "/admin/invoice/new" },
-          { label: "Settings", path: "/admin/invoice/settings" },
-        ],
-      },
+      // {
+      //   label: "Invoice",
+      //   icon: <InvoiceIcon />,
+      //   path: "/admin/invoice",
+      //   hasSubmenu: true,
+      //   subItems: [
+      //     { label: "All Invoices", path: "/admin/invoice" },
+      //     { label: "Create New", path: "/admin/invoice/new" },
+      //     { label: "Settings", path: "/admin/invoice/settings" },
+      //   ],
+      // },
     ],
   },
 ];

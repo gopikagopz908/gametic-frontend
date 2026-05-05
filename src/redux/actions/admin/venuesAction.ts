@@ -4,7 +4,8 @@ import axiosInstance from "@/utils/axiosInstance";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAllVenues = createAsyncThunk<
-  { allVenues: Venue[]; totalVenues: number; totalActiveVenues: number },
+  { allVenues: Venue[]; totalVenues: number; totalActiveVenues: number ,    totalBannedVenues: number; // ✅ add this
+},
   { page: number; limit: number; search: string },
   { rejectValue: string }
 >(
@@ -18,6 +19,8 @@ export const fetchAllVenues = createAsyncThunk<
         allVenues: response.data.venues,
         totalVenues: response.data.totalVenues,
         totalActiveVenues: response.data.totalActiveVenues,
+            totalBannedVenues:  response.data.totalBannedVenues, // ✅ add this
+
       };
     } catch (error) {
       return rejectWithValue(axiosErrorManager(error));

@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ListSkeleton from "./skelton/tableSkelton";
+import axiosInstance from "@/utils/axiosInstance";
 
 interface VenuesListProps {
   search: string;
@@ -34,7 +35,43 @@ const VenueList: React.FC<VenuesListProps> = ({ search }) => {
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(startItem + itemsPerPage - 1, totalVenues || 0);
   const totalPages = Math.ceil((totalVenues || 0) / itemsPerPage);
+ const toggleBlockVenueApi = (id: string) => {
+  return axiosInstance.patch(`/admin/ban/${id}`);
+};
 
+ const deleteVenueApi = (id: string) => {
+  return axiosInstance.delete(`/admin/delete-venu/${id}`);
+};
+
+
+const handleToggleBlock = async (id: string) => {
+  try {
+    const res = await toggleBlockVenueApi(id);
+    alert(res.data.message);
+
+    // 🔥 refresh list after action
+    dispatch(fetchAllVenues({ page: currentPage, limit: 5, search }));
+  } catch (error: any) {
+    alert(error.response?.data?.message || "Something went wrong");
+  }
+};
+
+const handleDeleteVenue = async (id: string) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to permanently delete this venue?"
+  );
+  if (!confirmDelete) return;
+
+  try {
+    const res = await deleteVenueApi(id);
+    alert(res.data.message);
+
+    // 🔥 refresh list
+    dispatch(fetchAllVenues({ page: currentPage, limit: 5, search }));
+  } catch (error: any) {
+    alert(error.response?.data?.message || "Something went wrong");
+  }
+};
   return (
     <div className="w-full rounded-lg bg-white shadow-sm border border-gray-100">
       {/* Table header with actions */}
@@ -182,18 +219,25 @@ const VenueList: React.FC<VenuesListProps> = ({ search }) => {
                             tabIndex={0}
                             className="dropdown-content menu shadow-lg bg-white rounded-lg p-2 w-48 border border-gray-100"
                           >
-                            <li>
-                              <button className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
-                                <Ban size={16} />
-                                <span>Ban Venue</span>
-                              </button>
-                            </li>
-                            <li>
-                              <button className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md">
-                                <Trash2 size={16} />
-                                <span>Delete Venue</span>
-                              </button>
-                            </li>
+                           <li>
+  <button
+    onClick={() => handleToggleBlock(item._id)}
+    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md"
+  >
+    <Ban size={16} />
+    <span>{item.isBlocked ? "Unban Venue" : "Ban Venue"}</span>
+  </button>
+</li>
+
+<li>
+  <button
+    onClick={() => handleDeleteVenue(item._id)}
+    className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md"
+  >
+    <Trash2 size={16} />
+    <span>Delete Venue</span>
+  </button>
+</li>
                           </ul>
                         </div>
                       </div>

@@ -99,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
                 {/* Profile Dropdown */}
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-[#00423D] rounded-md shadow-lg py-1 z-50 border border-[#415C41] list-none">
-                    <Link
+                    {/* <Link
                       href="/profile"
                       className="block px-4 py-2 text-sm text-[#98916D] hover:text-[#998869] transition-colors duration-200"
                     >
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
                       className="block px-4 py-2 text-sm text-[#98916D] hover:text-[#998869] transition-colors duration-200"
                     >
                       Dashboard
-                    </Link>
+                    </Link> */}
                     <hr className="my-1 border-[#415C41]" />
                     <li
                       onClick={logoutUser}
@@ -187,7 +187,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
                 </div>
 
                 <div className="mt-1 space-y-1">
-                  <Link
+                  {/* <Link
                     href="/profile"
                     className="block px-3 py-2 text-base text-[#98916D] hover:text-[#998869] rounded-md transition-colors duration-200"
                   >
@@ -204,7 +204,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
                     className="block px-3 py-2 text-base text-[#98916D] hover:text-[#998869] rounded-md transition-colors duration-200"
                   >
                     Dashboard
-                  </Link>
+                  </Link> */}
                   <li className="block px-3 py-2 text-base text-[#98916D] hover:text-[#998869] rounded-md transition-colors duration-200">
                     Sign Out
                   </li>

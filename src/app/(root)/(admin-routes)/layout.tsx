@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="fixed w-full z-40">
           <Navbar />
         </div>
-        <main className="overflow-auto flex-1 p-4">{children}</main>
+        <main className="overflow-auto flex-1 p-4  ">{children}</main>
       </div>
     </div>
   );

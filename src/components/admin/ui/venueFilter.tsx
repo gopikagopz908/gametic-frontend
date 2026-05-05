@@ -62,7 +62,7 @@ const VenueFilter: React.FC<VenueFilterProps> = ({ onSearch, getLocation, getTyp
   return (
     <div className="p-6 border-b border-gray-200 flex flex-wrap items-center gap-4">
       {/* Location Filter */}
-      <div className="relative w-48 location-dropdown">
+      {/* <div className="relative w-48 location-dropdown">
         <div className="relative w-full bg-white border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <MapPin size={16} className="text-gray-400" />
@@ -119,10 +119,10 @@ const VenueFilter: React.FC<VenueFilterProps> = ({ onSearch, getLocation, getTyp
               ))}
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* Type Filter */}
-      <div className="relative w-48 type-dropdown">
+      {/* <div className="relative w-48 type-dropdown">
         <button
           onClick={() => {
             setIsTypeDropdownOpen(!isTypeDropdownOpen);
@@ -165,7 +165,7 @@ const VenueFilter: React.FC<VenueFilterProps> = ({ onSearch, getLocation, getTyp
             ))}
           </div>
         )}
-      </div>
+      </div> */}
 
       <div className="relative flex-grow">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

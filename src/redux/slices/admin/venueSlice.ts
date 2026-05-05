@@ -20,6 +20,7 @@ export interface Venue {
     timeSlots: string[];
   };
   isDelete: boolean;
+  isBlocked:boolean;
   averageRating: number;
   ratings: {
     userId: string;
@@ -56,6 +57,7 @@ interface VenueState {
   venues: Venue[];
   totalVenues: number;
   totalActiveVenues: number;
+  totalBannedVenues :number;
   loading: boolean;
   error: string | null;
 }
@@ -64,6 +66,7 @@ const INITIAL_STATE: VenueState = {
   venues: [],
   totalVenues: 0,
   totalActiveVenues: 0,
+   totalBannedVenues :0,
   loading: false,
   error: null,
 };
@@ -83,6 +86,7 @@ const venueSlice = createSlice({
         state.venues = action.payload.allVenues;
         state.totalVenues = action.payload.totalVenues;
         state.totalActiveVenues = action.payload.totalActiveVenues;
+        state.totalBannedVenues = action.payload.totalBannedVenues;
       })
       .addCase(fetchAllVenues.rejected, (state, action) => {
         state.loading = false;

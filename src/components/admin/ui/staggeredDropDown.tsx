@@ -1,4 +1,4 @@
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiUser } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { IconType } from "react-icons";
@@ -12,7 +12,6 @@ const StaggeredDropDown = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
-
   const handleLogout = async () => {
     try {
       await dispatch(logout()).unwrap();
@@ -27,12 +26,13 @@ const StaggeredDropDown = () => {
   return (
     <div className="flex items-center justify-center">
       <motion.div animate={open ? "open" : "closed"} className="relative">
-        <button
-          onClick={() => setOpen((pv:boolean) => !pv)}
-          className="w-8 h-8 bg-gradient-to-r from-[#415C41] to-[#00423D] rounded-full flex items-center justify-center"
-        >
-          <span className="font-medium text-sm text-white">AG</span>
-        </button>
+        
+<button
+  onClick={() => setOpen((pv: boolean) => !pv)}
+  className="w-8 h-8 bg-gradient-to-r from-[#415C41] to-[#00423D] rounded-full flex items-center justify-center"
+>
+  <FiUser className="text-white text-sm" />
+</button>
         <motion.ul
           initial={wrapperVariants.closed}
           variants={wrapperVariants}
