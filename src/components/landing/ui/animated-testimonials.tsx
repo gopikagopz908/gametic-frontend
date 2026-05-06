@@ -51,6 +51,14 @@ export const AnimatedTestimonials = ({
 }) => {
   const [active, setActive] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [rotations, setRotations] = useState<number[]>([]);
+
+useEffect(() => {
+  const generatedRotations = testimonials.map(
+    () => Math.floor(Math.random() * 21) - 10
+  );
+  setRotations(generatedRotations);
+}, [testimonials]);
 
   const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -71,10 +79,7 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, handleNext, isHovered]);
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
-
+  
   return (
     <div
       className="relative w-full min-h-screen py-20 px-20 overflow-hidden"
@@ -108,14 +113,12 @@ export const AnimatedTestimonials = ({
                       opacity: 0,
                       scale: 0.8,
                       z: -100,
-                      rotate: randomRotateY(),
-                    }}
+rotate: rotations[index] ?? 0,                    }}
                     animate={{
                       opacity: isActive(index) ? 1 : 0.6,
                       scale: isActive(index) ? 1 : 0.85,
                       z: isActive(index) ? 0 : -100,
-                      rotate: isActive(index) ? 0 : randomRotateY(),
-                      zIndex: isActive(index)
+rotate: isActive(index) ? 0 : rotations[index] ?? 0,                      zIndex: isActive(index)
                         ? 40
                         : testimonials.length + 2 - index,
                       y: isActive(index) ? [0, -20, 0] : 0,
@@ -124,8 +127,7 @@ export const AnimatedTestimonials = ({
                       opacity: 0,
                       scale: 0.8,
                       z: 100,
-                      rotate: randomRotateY(),
-                    }}
+rotate: rotations[index] ?? 0,                    }}
                     transition={{
                       duration: 0.6,
                       ease: [0.25, 0.46, 0.45, 0.94],
@@ -223,8 +225,7 @@ export const AnimatedTestimonials = ({
 
             {/* Navigation */}
             <motion.div
-              className="flex items-center gap-4 mt-12 justify-endq"
-              initial={{ opacity: 0, y: 20 }}
+className="flex items-center gap-4 mt-12 justify-end"              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >

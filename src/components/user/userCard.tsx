@@ -113,9 +113,9 @@ const ActivityCard: React.FC<Match> = ({
             <FaMapMarkerAlt className="text-white text-xs" />
           </div>
           <div>
-            <span className="font-semibold truncate block">{turfId.name}</span>
+            <span className="font-semibold truncate block">{turfId?.name}</span>
             <span className="text-xs text-gray-500">
-              {turfId.city},{turfId.area},{turfId.location} away
+              {turfId?.city},{turfId?.area},{turfId?.location} away
             </span>
           </div>
         </div>
