@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo} from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchAllBookings } from "@/redux/actions/bookingActions";
 import BookingList from "@/components/admin/bookingLIst";
@@ -8,7 +8,6 @@ import { fetchAllVenues } from "@/redux/actions/admin/venuesAction";
 
 const Page = () => {
   const dispatch = useAppDispatch();
-  const { bookings } = useAppSelector((state) => state.adminBookings);
  const { venues } = useAppSelector((state) => state.adminVenues);
 
   useEffect(() => {
@@ -16,17 +15,27 @@ const Page = () => {
   }, [dispatch]);
 
   // 🔥 Flatten all bookings from venues
-  const allBookings = useMemo(() => {
-    if (!venues || venues.length === 0) return [];
+type Booking = {
+  status: string;
+[key: string]: unknown;};
 
-    return venues.flatMap((venue: any) =>
-      venue.bookings?.map((booking: any) => ({
-        ...booking,
-        venueName: venue.name,
-        ownerId: venue.ownerId,
-      })) || []
-    );
-  }, [venues]);
+type VenueWithBookings = {
+  name: string;
+  ownerId: string;
+  bookings?: Booking[];
+};
+
+const allBookings = useMemo(() => {
+  if (!venues || venues.length === 0) return [];
+
+  return (venues as VenueWithBookings[]).flatMap((venue) =>
+    (venue.bookings ?? []).map((booking) => ({
+      ...booking,
+      venueName: venue.name,
+      ownerId: venue.ownerId,
+    }))
+  );
+}, [venues]);
 
   // 📊 Stats
   const totalBookings = allBookings.length;
@@ -37,9 +46,7 @@ const Page = () => {
     (b) => b.status === "cancelled"
   ).length;
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [status, setStatus] = useState("");
-
+ 
   useEffect(() => {
     // ✅ If your action doesn't accept params, use this:
     dispatch(fetchAllBookings());

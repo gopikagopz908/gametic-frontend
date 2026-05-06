@@ -16,8 +16,10 @@ const ConfirmedBookingsPage = () => {
   const totalConfirmed = useMemo(() => {
     if (!venues) return 0;
 
-    return venues.flatMap((v: any) => v.bookings || [])
-      .filter((b: any) => b.status === "confirmed").length;
+   return venues
+  .flatMap((v: { bookings?: { status: string }[] }) => v.bookings ?? [])
+  .filter((b: { status: string }) => b.status === "confirmed")
+  .length;
   }, [venues]);
 
   return (

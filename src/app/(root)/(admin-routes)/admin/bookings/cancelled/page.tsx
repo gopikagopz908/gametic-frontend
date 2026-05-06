@@ -16,8 +16,10 @@ const CancelledBookingsPage = () => {
   const totalCancelled = useMemo(() => {
     if (!venues) return 0;
 
-    return venues.flatMap((v: any) => v.bookings || [])
-      .filter((b: any) => b.status === "cancelled").length;
+    return venues
+  .flatMap((v: { bookings?: { status: string }[] }) => v.bookings ?? [])
+  .filter((b: { status: string }) => b.status === "cancelled")
+  .length;
   }, [venues]);
 
   return (
