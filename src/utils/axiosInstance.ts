@@ -29,9 +29,11 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const refreshToken = Cookies.get("refreshToken");
-        const response = await axios.post("/api/auth/refresh-token", {
-          refreshToken,
-        });
+       const response = await axios.post(
+  `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/refresh-token`,
+  { refreshToken },
+  { withCredentials: true }
+);
         const newAccessToken = response.data.accessToken;
         Cookies.set("accessToken", newAccessToken);
         axiosInstance.defaults.headers.common[
