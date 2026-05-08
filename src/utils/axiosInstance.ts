@@ -2,7 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-  baseURL: "https://gametic-backend-1.onrender.com/api",                     
+  baseURL: "https://gametic-backend-1.onrender.com/api",
+  // baseURL: "http://localhost:4002/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -52,11 +53,11 @@ axiosInstance.interceptors.response.use(
 //   (response) => response,
 //   async (error) => {
 //     const originalRequest = error.config;
-    
+
 //     // Only handle 401 errors and avoid infinite loops
 //     if (error.response?.status === 401 && !originalRequest._retry) {
 //       originalRequest._retry = true;
-      
+
 //       try {
 //         // Use the same baseURL for the refresh request
 //         const response = await axios.post(
@@ -64,7 +65,7 @@ axiosInstance.interceptors.response.use(
 //           {},
 //           { withCredentials: true }
 //         );
-        
+
 //         // Update the original request with new token
 //         originalRequest.headers.Authorization = `Bearer ${response.data.accessToken}`;
 //         return axiosInstance(originalRequest);
@@ -74,7 +75,7 @@ axiosInstance.interceptors.response.use(
 //         return Promise.reject(refreshError);
 //       }
 //     }
-    
+
 //     return Promise.reject(error);
 //   }
 // );
